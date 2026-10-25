@@ -28,7 +28,7 @@ const translations = {
     s4_title: "Painless Laser Hair Removal", s4_desc: "Cooling diode laser tech for smooth hairless skin on all skin tones and sensitive areas.",
     s5_title: "Hair Loss & Scalp PRP", s5_desc: "Follicle revitalizing injections, PRP therapy, and hair density regrowth stimulation.",
     s6_title: "Body Sculpting & Fat Dissolve", s6_desc: "Targeted lipolysis, body fillers, cellulite reduction, and skin tightening.",
-    doc_tag: "MEDICAL TEAM", doc_title: "Meet Our Lead Specialist",
+    doc_tag: "MEDICAL TEAM", doc_title: "Meet Our Lead Specialists",
     doc_spec: "General Practitioner & Aesthetic Physician", doc_bio: "Specialized in facial rejuvenation, non-surgical thread lifts, dermal sculpting, and advanced dermatology treatments.",
     gal_tag: "CLINIC & RESULTS", gal_title: "Interactive Clinic Showcase",
     foot_contact: "Contact Us", foot_hours: "Working Hours",
@@ -149,7 +149,6 @@ function initNav() {
     });
   }
 
-  // Auto-close menu on link click
   const allNavLinks = document.querySelectorAll('.nav-link, .mobile-link');
   allNavLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -181,7 +180,6 @@ function setLanguage(lang) {
   if (!translations[lang]) return;
   currentLanguage = lang;
 
-  // Set RTL for Arabic
   if (lang === 'ar') {
     document.documentElement.setAttribute('dir', 'rtl');
     document.documentElement.setAttribute('lang', 'ar');
@@ -190,7 +188,6 @@ function setLanguage(lang) {
     document.documentElement.setAttribute('lang', lang);
   }
 
-  // Update text content with data-i18n
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (translations[lang][key]) {
@@ -198,14 +195,12 @@ function setLanguage(lang) {
     }
   });
 
-  // Update current language label
   const currentLangSpan = document.getElementById('currentLang');
   if (currentLangSpan) {
     const langNames = { en: 'English', ar: 'العربية', fr: 'Français' };
     currentLangSpan.textContent = langNames[lang];
   }
 
-  // Update active dropdown item state
   document.querySelectorAll('.lang-option').forEach(opt => {
     opt.classList.remove('active');
   });
@@ -229,6 +224,33 @@ function filterServices(category, btnElement) {
     } else {
       card.style.display = 'none';
     }
+  });
+}
+
+// Doctors Carousel Sliding Logic
+function slideDoctors(direction) {
+  const slider = document.getElementById('doctorsSlider');
+  if (!slider) return;
+  
+  const cardWidth = slider.querySelector('.doctor-card').offsetWidth + 32;
+  slider.scrollBy({
+    left: direction * cardWidth,
+    behavior: 'smooth'
+  });
+}
+
+// Toggle Side Floating Widgets
+const sideWidgets = document.getElementById('sideWidgets');
+const mainTriggerBtn = document.getElementById('mainTriggerBtn');
+
+if (mainTriggerBtn && sideWidgets) {
+  mainTriggerBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    sideWidgets.classList.toggle('active');
+  });
+
+  document.addEventListener('click', () => {
+    sideWidgets.classList.remove('active');
   });
 }
 
@@ -290,32 +312,4 @@ function showToast(message) {
     toast.style.transition = 'opacity 0.4s ease';
     setTimeout(() => toast.remove(), 400);
   }, 4000);
-}
-
-// Toggle Side Floating Widgets
-const sideWidgets = document.getElementById('sideWidgets');
-const mainTriggerBtn = document.getElementById('mainTriggerBtn');
-
-if (mainTriggerBtn && sideWidgets) {
-  mainTriggerBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    sideWidgets.classList.toggle('active');
-  });
-
-  // Isasara kapag nag-click sa labas
-  document.addEventListener('click', () => {
-    sideWidgets.classList.remove('active');
-  });
-}
-
-// Doctors Carousel Sliding Logic
-function slideDoctors(direction) {
-  const slider = document.getElementById('doctorsSlider');
-  if (!slider) return;
-  
-  const cardWidth = slider.querySelector('.doctor-card').offsetWidth + 32; // card width + gap
-  slider.scrollBy({
-    left: direction * cardWidth,
-    behavior: 'smooth'
-  });
 }
