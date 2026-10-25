@@ -291,3 +291,19 @@ function showToast(message) {
     setTimeout(() => toast.remove(), 400);
   }, 4000);
 }
+
+// Toggle Side Floating Widgets
+const sideWidgets = document.getElementById('sideWidgets');
+const mainTriggerBtn = document.getElementById('mainTriggerBtn');
+
+if (mainTriggerBtn && sideWidgets) {
+  mainTriggerBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    sideWidgets.classList.toggle('active');
+  });
+
+  // Isasara kapag nag-click sa labas
+  document.addEventListener('click', () => {
+    sideWidgets.classList.remove('active');
+  });
+}

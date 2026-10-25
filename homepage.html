@@ -370,20 +370,25 @@
     </div>
   </footer>
 
-  <!-- Floating Side Social & Contact Widgets -->
-<div class="side-floating-widgets">
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/rendez_vous_clinic" target="_blank" class="side-widget-btn instagram" aria-label="Instagram">
-    <i class="fa-brands fa-instagram"></i>
-  </a>
-  <!-- WhatsApp -->
-  <a href="https://wa.me/971500000000" target="_blank" class="side-widget-btn whatsapp" aria-label="WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-  <!-- Phone Call -->
-  <a href="(04) 5581068" class="side-widget-btn phone" aria-label="Call Us">
-    <i class="fa-solid fa-phone"></i>
-  </a>
+  <!-- Collapsible Side Floating Widgets -->
+<div class="side-floating-widgets" id="sideWidgets">
+  <!-- Nakatagong Sub-Buttons (WhatsApp & Instagram & Call) -->
+  <div class="side-sub-widgets">
+    <a href="https://instagram.com" target="_blank" class="side-widget-btn instagram" aria-label="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://wa.me/971500000000" target="_blank" class="side-widget-btn whatsapp" aria-label="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="tel:+97141234567" class="side-widget-btn phone" aria-label="Call Us">
+      <i class="fa-solid fa-phone"></i>
+    </a>
+  </div>
+
+  <!-- Main Trigger Button (Telephone icon na kapag pinindot, lalabas ang iba) -->
+  <button class="side-widget-btn main-trigger" id="mainTriggerBtn" aria-label="Quick Contact">
+    <i class="fa-solid fa-headset"></i>
+  </button>
 </div>
 
   <!-- Booking Modal -->
