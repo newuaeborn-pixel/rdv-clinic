@@ -841,32 +841,127 @@ body[dir="rtl"] .toast-container { right: auto; left: 2.8rem; }
 }
 
 /* ==========================================================================
-   ULTRA RESPONSIVE BREAKPOINTS (Mobile, Tablet, Laptop, Desktop)
+   ULTRA-RESPONSIVE FLUID LAYOUT & BREAKPOINTS ENGINE
    ========================================================================== */
+
+/* 1. Global Box-Sizing & Image Scaling Protection */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 2. Responsive Container Padding Adjustments */
+@media (max-width: 1200px) {
+  .container, .nav-container, .features-container, .footer-grid {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* 3. Tablets & Small Laptops (Max-width: 1024px) */
 @media (max-width: 1024px) {
   .nav-menu { display: none; }
   .nav-book-btn { display: none; }
   .hamburger-btn { display: flex; }
-  .about-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+  
+  .about-grid { 
+    grid-template-columns: 1fr; 
+    gap: 3.5rem; 
+  }
   .about-img-sub { display: none; }
   .about-img-main { width: 100%; }
-  .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+  
+  .footer-grid { 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 3rem; 
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
+/* 4. Large Smartphones & Small Tablets (Max-width: 768px) */
 @media (max-width: 768px) {
-  .floating-bar { display: flex; }
-  .hero { padding-top: 9rem; padding-bottom: 5rem; }
-  .section { padding: 5.5rem 1.2rem; }
-  .modal-content { padding: 2.4rem 1.8rem; }
+  .floating-bar { display: flex; } /* Mobile bottom quick action bar */
+  
+  .hero { 
+    padding-top: 8.5rem; 
+    padding-bottom: 4.5rem; 
+    min-height: 85vh;
+  }
+  
+  .hero-title {
+    font-size: 2.3rem;
+  }
+  
+  .section { 
+    padding: 5rem 1.2rem; 
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal-content { 
+    padding: 2.2rem 1.5rem; 
+    width: 92%;
+    margin: 0 auto;
+  }
+
+  .doctor-carousel-wrapper {
+    gap: 0.5rem;
+  }
 }
 
-@media (max-width: 576px) {
-  .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-}
-
+/* 5. Small Mobile Devices / Compact Phones (Max-width: 480px) */
 @media (max-width: 480px) {
-  .logo-main { font-size: 1.25rem; letter-spacing: 1.5px; }
-  .logo-sub { font-size: 0.5rem; }
-  .hero-title { font-size: 2.2rem; }
-  .services-grid, .gallery-grid { grid-template-columns: 1fr; }
+  .nav-container {
+    padding: 0 1rem;
+  }
+
+  .brand-logo img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo-main { 
+    font-size: 1.15rem; 
+    letter-spacing: 1.2px; 
+  }
+  
+  .logo-sub { 
+    font-size: 0.48rem; 
+    letter-spacing: 0.8px; 
+  }
+
+  .hero-title { 
+    font-size: 1.9rem; 
+  }
+  
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .footer-grid { 
+    grid-template-columns: 1fr; 
+    gap: 2.5rem; 
+  }
+
+  .gallery-grid { 
+    grid-template-columns: 1fr; 
+  }
+
+  /* Ayos ng Side Floating Widgets para hindi humarang sa maliliit na screen */
+  .side-floating-widgets {
+    right: 15px;
+    bottom: 80px;
+  }
+  
+  .side-widget-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
 }
