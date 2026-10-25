@@ -125,127 +125,169 @@ const translations = {
   }
 };
 
+let currentLanguage = 'en';
+
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initLangDropdown();
 });
 
+// Mobile Hamburger & Mobile Drawer Controls
 function initNav() {
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const navMenu = document.getElementById('navMenu');
-  
-  hamburgerBtn?.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    hamburgerBtn.classList.toggle('open');
-  });
+  const mobileDrawer = document.getElementById('mobileDrawer');
 
-  document.querySelectorAll('.nav-link').forEach(link => {
+  if (hamburgerBtn) {
+    hamburgerBtn.addEventListener('click', () => {
+      hamburgerBtn.classList.toggle('open');
+      if (mobileDrawer) {
+        mobileDrawer.classList.toggle('open');
+      } else if (navMenu) {
+        navMenu.classList.toggle('active');
+      }
+    });
+  }
+
+  // Auto-close menu on link click
+  const allNavLinks = document.querySelectorAll('.nav-link, .mobile-link');
+  allNavLinks.forEach(link => {
     link.addEventListener('click', () => {
-      navMenu.classList.remove('active');
       hamburgerBtn?.classList.remove('open');
+      mobileDrawer?.classList.remove('open');
+      navMenu?.classList.remove('active');
     });
   });
 }
 
-/* Language Dropdown Engine */
+// Multi-Language Dropdown Engine
 function initLangDropdown() {
   const langBtn = document.getElementById('langBtn');
   const langMenu = document.getElementById('langMenu');
 
-  langBtn?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    langMenu.classList.toggle('show');
-  });
+  if (langBtn && langMenu) {
+    langBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langMenu.classList.toggle('show');
+    });
 
-  document.addEventListener('click', () => langMenu?.classList.remove('show'));
+    document.addEventListener('click', () => {
+      langMenu.classList.remove('show');
+    });
+  }
 }
 
 function setLanguage(lang) {
-  const langNames = { en: "English", ar: "العربية", fr: "Français" };
-  document.getElementById('currentLang').innerText = langNames[lang];
+  if (!translations[lang]) return;
+  currentLanguage = lang;
 
-  // Auto RTL Adjustment for Arabic
+  // Set RTL for Arabic
   if (lang === 'ar') {
-    document.body.dir = 'rtl';
+    document.documentElement.setAttribute('dir', 'rtl');
+    document.documentElement.setAttribute('lang', 'ar');
   } else {
-    document.body.dir = 'ltr';
+    document.documentElement.setAttribute('dir', 'ltr');
+    document.documentElement.setAttribute('lang', lang);
   }
 
-  // Instant Translation Replacement
+  // Update text content with data-i18n
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (translations[lang] && translations[lang][key]) {
-      el.innerText = translations[lang][key];
+    if (translations[lang][key]) {
+      el.textContent = translations[lang][key];
     }
   });
 
-  document.querySelectorAll('.lang-option').forEach(opt => opt.classList.remove('active'));
-  document.getElementById('langMenu')?.classList.remove('show');
-  showToast(`Language switched to ${langNames[lang]}`);
+  // Update current language label
+  const currentLangSpan = document.getElementById('currentLang');
+  if (currentLangSpan) {
+    const langNames = { en: 'English', ar: 'العربية', fr: 'Français' };
+    currentLangSpan.textContent = langNames[lang];
+  }
+
+  // Update active dropdown item state
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.classList.remove('active');
+  });
+  const activeOpt = document.querySelector(`.lang-option[onclick*="'${lang}'"]`);
+  if (activeOpt) activeOpt.classList.add('active');
+
+  const langMenu = document.getElementById('langMenu');
+  langMenu?.classList.remove('show');
 }
 
-/* Smooth Category Filtering with Animations */
-function filterServices(category, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+// Services Filter System
+function filterServices(category, btnElement) {
+  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+  if (btnElement) btnElement.classList.add('active');
 
-  document.querySelectorAll('.service-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(15px)';
-    
-    setTimeout(() => {
-      if (category === 'all' || card.dataset.category === category) {
-        card.style.display = 'block';
-        setTimeout(() => {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }, 60);
-      } else {
-        card.style.display = 'none';
-      }
-    }, 220);
+  const cards = document.querySelectorAll('.service-card');
+  cards.forEach(card => {
+    const cardCat = card.getAttribute('data-category');
+    if (category === 'all' || cardCat === category) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
   });
 }
 
-/* Modals Management */
+// Booking Modal Logic
 function openBookingModal(serviceName = '') {
-  if (serviceName) {
-    const select = document.getElementById('modalServiceSelect');
-    if (select) select.value = serviceName;
+  const modal = document.getElementById('bookingModal');
+  const select = document.getElementById('modalServiceSelect');
+  if (serviceName && select) {
+    select.value = serviceName;
   }
-  document.getElementById('bookingModal')?.classList.add('active');
+  modal?.classList.add('active');
 }
 
 function closeBookingModal() {
-  document.getElementById('bookingModal')?.classList.remove('active');
+  const modal = document.getElementById('bookingModal');
+  modal?.classList.remove('active');
 }
 
 function handleBookingSubmit(e) {
   e.preventDefault();
   closeBookingModal();
-  showToast('Consultation request sent successfully! Our Dubai team will WhatsApp you.');
+  showToast(
+    currentLanguage === 'ar' 
+      ? 'تم استلام طلبك بنجاح! سيتواصل معك فريقنا قريباً.' 
+      : currentLanguage === 'fr' 
+      ? 'Demande reçue avec succès! Notre équipe vous contactera sous peu.' 
+      : 'Booking request received! Our team will contact you shortly.'
+  );
   e.target.reset();
 }
 
-function openLightbox(src) {
-  document.getElementById('lightboxImg').src = src;
-  document.getElementById('lightboxModal')?.classList.add('active');
+// Lightbox Showcase
+function openLightbox(imgSrc) {
+  const lightbox = document.getElementById('lightboxModal');
+  const img = document.getElementById('lightboxImg');
+  if (lightbox && img) {
+    img.src = imgSrc;
+    lightbox.classList.add('active');
+  }
 }
 
 function closeLightbox() {
-  document.getElementById('lightboxModal')?.classList.remove('active');
+  const lightbox = document.getElementById('lightboxModal');
+  lightbox?.classList.remove('active');
 }
 
-/* Toast Notification */
-function showToast(msg) {
+// Toast System
+function showToast(message) {
   const container = document.getElementById('toastContainer');
+  if (!container) return;
+
   const toast = document.createElement('div');
   toast.className = 'toast';
-  toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color:var(--primary-gold);"></i> <span>${msg}</span>`;
+  toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color: var(--primary-gold);"></i> <span>${message}</span>`;
   container.appendChild(toast);
+
   setTimeout(() => {
     toast.style.opacity = '0';
-    toast.style.transform = 'translateY(10px)';
+    toast.style.transition = 'opacity 0.4s ease';
     setTimeout(() => toast.remove(), 400);
-  }, 3500);
+  }, 4000);
 }
