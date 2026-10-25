@@ -382,6 +382,37 @@
     </div>
   </footer>
 
+  <!-- Booking Modal -->
+  <div class="modal" id="bookingModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeBookingModal()">&times;</button>
+      <h3 data-i18n="modal_title">Book Consultation</h3>
+      <p class="modal-sub" data-i18n="modal_sub">Fill in your details below to schedule your visit with our doctors.</p>
+      <form id="bookingForm" onsubmit="handleBookingSubmit(event)">
+        <div class="form-group">
+          <label data-i18n="lbl_name">Full Name *</label>
+          <input type="text" required placeholder="e.g. Sarah Mansoor">
+        </div>
+        <div class="form-group">
+          <label data-i18n="lbl_phone">Phone / WhatsApp Number *</label>
+          <input type="tel" required placeholder="+971 50 000 0000">
+        </div>
+        <div class="form-group">
+          <label data-i18n="lbl_service">Select Service</label>
+          <select id="modalServiceSelect">
+            <option value="Dermal Fillers">Dermal Fillers</option>
+            <option value="Botox">Botox Treatments</option>
+            <option value="HydraFacial">HydraFacial</option>
+            <option value="Laser Hair Removal">Laser Hair Removal</option>
+            <option value="Hair PRP">Hair PRP Therapy</option>
+            <option value="Body Contouring">Body Contouring</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full" data-i18n="btn_submit">Confirm Booking</button>
+      </form>
+    </div>
+  </div>
+
   <!-- Lightbox Modal -->
   <div class="modal" id="lightboxModal">
     <div class="lightbox-content">
