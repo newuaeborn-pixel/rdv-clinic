@@ -82,7 +82,7 @@ body[dir="rtl"] .modal-close { right: auto; left: 1.5rem; }
   justify-content: space-between;
 }
 
-/* --- LOGO NA WALANG WHITE BG (Transparent/Highlighted RV Logo) --- */
+/* --- LOGO NA MAY SOLID GOLD CIRCULAR BADGE --- */
 .brand-logo {
   text-decoration: none;
   display: inline-flex;
@@ -93,14 +93,22 @@ body[dir="rtl"] .modal-close { right: auto; left: 1.5rem; }
 }
 
 .brand-logo img {
-  width: 46px;
-  height: 46px;
-  object-fit: contain;        /* Sinisigurong sakto ang aspect ratio nang walang pilit na background */
-  background: transparent;    /* Tinanggal ang puting kulay sa loob */
-  border: none;               /* Tinanggal ang border para yung mismong logo ang litaw */
-  filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.4)); /* Binigyan ng eleganteng glow highlights */
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--primary-gold); /* Solid Gold background badge */
+  padding: 6px;                          /* Space sa loob para nakagitna ang icon/image */
+  object-fit: contain;                   
+  object-position: center;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
   flex-shrink: 0;
   display: block;
+  transition: var(--transition);
+}
+
+.brand-logo:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
 }
 
 .brand-text {
@@ -702,7 +710,7 @@ body[dir="rtl"] .footer-links-list a:hover {
 .floating-btn.whatsapp { background: #25d366; color: #FFF; }
 .floating-btn.book { background: var(--primary-gold); color: #0D0D0D; }
 
-/* --- SIDE FLOATING WIDGETS (Aangat Pataas) --- */
+/* --- SIDE FLOATING WIDGETS (Aangat Pataas)[cite: 1, 2] --- */
 .side-floating-widgets {
   position: fixed;
   right: 20px;
@@ -841,7 +849,7 @@ body[dir="rtl"] .toast-container { right: auto; left: 2.8rem; }
 }
 
 /* ==========================================================================
-   ULTRA RESPONSIVE FLUID MEDIA QUERIES (AUTO-FIT PARA SA LAHAT NG DEVICE)
+   ULTRA-RESPONSIVE FLUID MEDIA QUERIES (AUTO-FIT SA LAHAT NG DEVICE)
    ========================================================================== */
 
 @media (max-width: 1200px) {
@@ -896,6 +904,7 @@ body[dir="rtl"] .toast-container { right: auto; left: 2.8rem; }
   .brand-logo img {
     width: 38px;
     height: 38px;
+    padding: 5px;
   }
 
   .logo-main { font-size: 1.15rem; letter-spacing: 1.2px; }
