@@ -762,12 +762,12 @@ body[dir="rtl"] .toast-container { right: auto; left: 2.8rem; }
   bottom: 30px;
   z-index: 999;
   display: flex;
-  flex-direction: column-reverse; /* Para pumنتو sa taas ang lalabas na buttons */
+  flex-direction: column;
   align-items: center;
   gap: 12px;
 }
 
-/* Sub-buttons (Instagram & WhatsApp) na nakatago muna */
+/* Sub-buttons na nakatago muna at aangat paitaas kapag pinindot */
 .side-sub-widgets {
   display: flex;
   flex-direction: column;
@@ -777,9 +777,10 @@ body[dir="rtl"] .toast-container { right: auto; left: 2.8rem; }
   transform: translateY(20px) scale(0.8);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
+  order: -1; /* Pilit na inilalagay sa itaas ng main button sa display */
 }
 
-/* Kapag active o clinick ang main trigger, lalabas sila */
+/* Kapag active, aangat sila paitaas nang sunod-sunod */
 .side-floating-widgets.active .side-sub-widgets {
   opacity: 1;
   visibility: visible;
@@ -796,7 +797,7 @@ body[dir="rtl"] .toast-container { right: auto; left: 2.8rem; }
   justify-content: center;
   color: #ffffff;
   font-size: 1.3rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   cursor: pointer;
@@ -805,17 +806,17 @@ body[dir="rtl"] .toast-container { right: auto; left: 2.8rem; }
 
 .side-widget-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
 
-/* Main Trigger Button (Telephone / Toggle) */
+/* Main Trigger Button (Laging nakikita sa ibaba) */
 .side-widget-btn.main-trigger {
   background-color: var(--primary-gold);
   font-size: 1.4rem;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-/* Umiikot nang konti ang icon kapag bukas */
+/* Umiikot ang icon kapag bukas */
 .side-floating-widgets.active .main-trigger i {
   transform: rotate(45deg);
   transition: transform 0.3s ease;
