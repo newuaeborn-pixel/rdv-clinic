@@ -839,3 +839,73 @@ body[dir="rtl"] .side-floating-widgets {
   right: auto;
   left: 20px;
 }
+
+/* --- DOCTORS SLIDER / CAROUSEL STYLES --- */
+.doctor-carousel-wrapper {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.doctors-slider {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+  padding: 1rem 0.5rem;
+  width: 100%;
+}
+
+.doctors-slider::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+.doctors-slider .doctor-card {
+  flex: 0 0 100%;
+  max-width: 420px;
+  scroll-snap-align: center;
+  margin: 0 auto;
+}
+
+/* Carousel Control Buttons */
+.carousel-btn {
+  background: #FFF;
+  border: 1px solid var(--border-soft);
+  color: var(--primary-gold);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  transition: var(--transition);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background: var(--primary-gold);
+  color: #FFF;
+  border-color: var(--primary-gold);
+  transform: scale(1.08);
+}
+
+@media (max-width: 768px) {
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  .doctor-carousel-wrapper {
+    gap: 0.5rem;
+  }
+}

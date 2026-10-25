@@ -307,3 +307,15 @@ if (mainTriggerBtn && sideWidgets) {
     sideWidgets.classList.remove('active');
   });
 }
+
+// Doctors Carousel Sliding Logic
+function slideDoctors(direction) {
+  const slider = document.getElementById('doctorsSlider');
+  if (!slider) return;
+  
+  const cardWidth = slider.querySelector('.doctor-card').offsetWidth + 32; // card width + gap
+  slider.scrollBy({
+    left: direction * cardWidth,
+    behavior: 'smooth'
+  });
+}

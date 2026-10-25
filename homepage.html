@@ -241,7 +241,8 @@
 
         <div class="service-card" data-category="laser">
           <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b4?auto=format&fit=crop&w=600&q=80" alt="Hair Therapy">
+            <!-- Bagong updated image para sa Hair Therapy -->
+            <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=600&q=80" alt="Hair Therapy">
             <span class="price-tag">From 1,000 AED</span>
           </div>
           <div class="card-body">
@@ -250,10 +251,10 @@
             <button class="btn btn-outline btn-sm" onclick="openBookingModal('Hair PRP')" data-i18n="card_btn">Book Treatment</button>
           </div>
         </div>
-
         <div class="service-card" data-category="body">
           <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1519824145371-296894a0daf9?auto=format&fit=crop&w=600&q=80" alt="Body Contouring">
+            <!-- Bagong updated image para sa Body Contouring -->
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80" alt="Body Contouring">
             <span class="price-tag">From 1,000 AED</span>
           </div>
           <div class="card-body">
@@ -266,27 +267,104 @@
     </div>
   </section>
 
-  <!-- Doctors Section -->
+ <!-- Doctors Section -->
   <section class="section doctors" id="doctors">
     <div class="container">
       <div class="section-header">
         <span class="section-tag" data-i18n="doc_tag">MEDICAL TEAM</span>
-        <h2 class="section-title" data-i18n="doc_title">Meet Our Lead Specialist</h2>
+        <h2 class="section-title" data-i18n="doc_title">Meet Our Lead Specialists</h2>
       </div>
 
-      <div class="doctors-grid">
-        <div class="doctor-card">
-          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80" alt="Dr. Marwa Medjabri">
-          <div class="doctor-info">
-            <h3>Dr. Marwa Medjabri</h3>
-            <span class="doc-title" data-i18n="doc_spec">General Practitioner & Aesthetic Physician</span>
-            <p data-i18n="doc_bio">Specialized in facial rejuvenation, non-surgical thread lifts, dermal sculpting, and advanced dermatology treatments.</p>
-            <div class="doc-socials">
-              <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-              <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <!-- Doctor Carousel Container -->
+      <div class="doctor-carousel-wrapper">
+        <button class="carousel-btn prev-btn" onclick="slideDoctors(-1)" aria-label="Previous Doctor">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <div class="doctors-slider" id="doctorsSlider">
+          <!-- Doctor 1 -->
+          <div class="doctor-card">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80" alt="Dr. Marwa Medjabri">
+            <div class="doctor-info">
+              <h3>Dr. Marwa Medjabri</h3>
+              <span class="doc-title">General Practitioner & Aesthetic Physician</span>
+              <p>Specialized in facial rejuvenation, non-surgical thread lifts, dermal sculpting, and advanced dermatology treatments.</p>
+              <div class="doc-socials">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- Doctor 2 -->
+          <div class="doctor-card">
+            <img src="https://images.unsplash.com/photo-1594824813589-9ea508a8b27f?auto=format&fit=crop&w=600&q=80" alt="Dr. Rami Al-Sayed">
+            <div class="doctor-info">
+              <h3>Dr. Rami Al-Sayed</h3>
+              <span class="doc-title">Consultant Dermatologist</span>
+              <p>Expert in clinical dermatology, laser skin resurfacing, acne scar revision, and pediatric skin conditions.</p>
+              <div class="doc-socials">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- Doctor 3 -->
+          <div class="doctor-card">
+            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80" alt="Dr. Layla Vance">
+            <div class="doctor-info">
+              <h3>Dr. Layla Vance</h3>
+              <span class="doc-title">Aesthetic Surgeon & Laser Specialist</span>
+              <p>Focuses on micro-pigmentation, advanced anti-aging protocols, collagen stimulation, and body contouring.</p>
+              <div class="doc-socials">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- Doctor 4 -->
+          <div class="doctor-card">
+            <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=600&q=80" alt="Dr. Tariq Ziad">
+            <div class="doctor-info">
+              <h3>Dr. Tariq Ziad</h3>
+              <span class="doc-title">Plastic & Reconstructive Surgeon</span>
+              <p>Renowned specialist in facial harmonization, rhinoplasty consultation, and non-invasive fat freezing therapies.</p>
+              <div class="doc-socials">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- Doctor 5 -->
+          <div class="doctor-card">
+            <img src="https://images.unsplash.com/photo-1527613426441-2da17477ef66?auto=format&fit=crop&w=600&q=80" alt="Dr. Nadine Moreau">
+            <div class="doctor-info">
+              <h3>Dr. Nadine Moreau</h3>
+              <span class="doc-title">Trichology & Hair Restoration Expert</span>
+              <p>Specializes in advanced scalp treatments, PRP therapy, and permanent follicle restoration solutions.</p>
+              <div class="doc-socials">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- Doctor 6 -->
+          <div class="doctor-card">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80" alt="Dr. Karim Bensaid">
+            <div class="doctor-info">
+              <h3>Dr. Karim Bensaid</h3>
+              <span class="doc-title">Laser & Anti-Aging Specialist</span>
+              <p>Dedicated to pigment correction, chemical peels, and holistic skin health maintenance programs.</p>
+              <div class="doc-socials">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
             </div>
           </div>
         </div>
+
+        <button class="carousel-btn next-btn" onclick="slideDoctors(1)" aria-label="Next Doctor">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
       </div>
     </div>
   </section>
@@ -314,6 +392,15 @@
         </div>
         <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1512290900673-3e1346f15ddf?auto=format&fit=crop&w=1200&q=80')">
           <img src="https://images.unsplash.com/photo-1512290900673-3e1346f15ddf?auto=format&fit=crop&w=600&q=80" alt="Dermatology">
+          <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <!-- Idinagdag ang ika-5 at ika-6 na larawan para sa kumpletong 6 items -->
+        <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80')">
+          <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" alt="Aesthetic Suite">
+          <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=80')">
+          <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80" alt="Laser Treatment Room">
           <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
         </div>
       </div>
