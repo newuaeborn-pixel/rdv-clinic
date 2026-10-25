@@ -97,7 +97,7 @@ body[dir="rtl"] .modal-close { right: auto; left: 1.5rem; }
   height: 44px;
   border-radius: 50%;
   background-color: var(--primary-gold); /* Solid Gold background badge */
-  padding: 6px;                          /* Space sa loob para nakagitna ang icon/image */
+  padding: 6px;                          
   object-fit: contain;                   
   object-position: center;
   box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
@@ -710,7 +710,7 @@ body[dir="rtl"] .footer-links-list a:hover {
 .floating-btn.whatsapp { background: #25d366; color: #FFF; }
 .floating-btn.book { background: var(--primary-gold); color: #0D0D0D; }
 
-/* --- SIDE FLOATING WIDGETS (Aangat Pataas)[cite: 1, 2] --- */
+/* --- MOVABLE / DRAGGABLE SIDE FLOATING WIDGETS --- */
 .side-floating-widgets {
   position: fixed;
   right: 20px;
@@ -720,6 +720,11 @@ body[dir="rtl"] .footer-links-list a:hover {
   flex-direction: column;
   align-items: center;
   gap: 12px;
+  cursor: grab; /* Mukhang pwedeng hawakan at hilahin */
+}
+
+.side-floating-widgets:active {
+  cursor: grabbing;
 }
 
 .side-sub-widgets {
