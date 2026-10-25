@@ -1,0 +1,12 @@
+{
+  "name": "rdv-clinic",
+  "version": "1.0.0",
+  "description": "Rendez-Vous Aesthetics & Dermatology Dubai",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
