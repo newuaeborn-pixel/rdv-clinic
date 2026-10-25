@@ -39,25 +39,24 @@
       </div>
 
       <div class="nav-actions">
-        <!-- Multi-Language Dropdown -->
-        <div class="lang-dropdown">
-          <button class="lang-btn" id="langBtn" aria-label="Language Selector">
-            <i class="fa-solid fa-globe"></i>
-            <span id="currentLang">English</span>
-            <i class="fa-solid fa-chevron-down arrow"></i>
-          </button>
-          <div class="lang-menu" id="langMenu">
-            <button class="lang-option active" onclick="setLanguage('en')">
-              <span class="flag">🇬🇧</span> English
-            </button>
-            <button class="lang-option" onclick="setLanguage('ar')">
-              <span class="flag">🇦🇪</span> العربية (Arabic)
-            </button>
-            <button class="lang-option" onclick="setLanguage('fr')">
-              <span class="flag">🇫🇷</span> Français (French)
-            </button>
-          </div>
-        </div>
+    <!-- Multi-Language Dropdown -->
+    <div class="lang-dropdown">
+      <button class="lang-btn" id="langBtn" aria-label="Language Selector">
+        <span id="currentLang" style="font-weight: 700;">Language</span>
+      </button>
+      <div class="lang-menu" id="langMenu">
+        <button class="lang-option active" onclick="setLanguage('en')">
+          <span class="flag">🇬🇧</span> English
+        </button>
+        <button class="lang-option" onclick="setLanguage('ar')">
+          <span class="flag">🇦🇪</span> العربية (Arabic)
+        </button>
+        <button class="lang-option" onclick="setLanguage('fr')">
+          <span class="flag">🇫🇷</span> Français (French)
+        </button>
+      </div>
+    </div>
+</div>
 
         <button class="btn btn-primary nav-book-btn" onclick="openBookingModal()">
           <i class="fa-regular fa-calendar-check"></i> <span data-i18n="btn_book">Book Now</span>
